@@ -13,12 +13,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val chatAdapter= ChatAdapter(this)
+        chatAdapter.addChatList(getChatMessageLocally())
         chatProgressBar.visibility=View.VISIBLE
         chatRecycleView.layoutManager=LinearLayoutManager(this)
         chatRecycleView.adapter= chatAdapter
         chatProgressBar.visibility=View.GONE
     }
-    fun getChatMessageLocally(){
+    fun getChatMessageLocally() : ArrayList<ChatMessage>{
         var chatList:ArrayList<ChatMessage> = arrayListOf<ChatMessage>()
         chatList.add(ChatMessage(sender="asif",date="22.2.2002",message="this is my my message"))
         chatList.add(ChatMessage(sender="ali",date="2.2.2242",message="this is my my message"))
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         chatList.add(ChatMessage(sender="iqrar",date="22.12.2202",message="this is my my message"))
         chatList.add(ChatMessage(sender="zesahan",date="22.10.2020",message="this is my my message"))
 
+        return chatList
 
     }
 
